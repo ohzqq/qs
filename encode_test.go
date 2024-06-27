@@ -12,85 +12,85 @@ import (
 )
 
 type basicVal struct {
-	String     string     `qs:"string"`
-	Bool       bool       `qs:"bool"`
-	Int        int        `qs:"int"`
-	Int8       int8       `qs:"int8"`
-	Int16      int16      `qs:"int16"`
-	Int32      int32      `qs:"int32"`
-	Int64      int64      `qs:"int64"`
-	Uint       uint       `qs:"uint"`
-	Uint8      uint8      `qs:"uint8"`
-	Uint16     uint16     `qs:"uint16"`
-	Uint32     uint32     `qs:"uint32"`
-	Uint64     uint64     `qs:"uint64"`
-	Uintptr    uintptr    `qs:"uintptr"`
-	Float32    float32    `qs:"float32"`
-	Float64    float64    `qs:"float64"`
-	Complex64  complex64  `qs:"complex64"`
-	Complex128 complex128 `qs:"complex128"`
-	Time       time.Time  `qs:"time"`
+	String     string     `query:"string"`
+	Bool       bool       `query:"bool"`
+	Int        int        `query:"int"`
+	Int8       int8       `query:"int8"`
+	Int16      int16      `query:"int16"`
+	Int32      int32      `query:"int32"`
+	Int64      int64      `query:"int64"`
+	Uint       uint       `query:"uint"`
+	Uint8      uint8      `query:"uint8"`
+	Uint16     uint16     `query:"uint16"`
+	Uint32     uint32     `query:"uint32"`
+	Uint64     uint64     `query:"uint64"`
+	Uintptr    uintptr    `query:"uintptr"`
+	Float32    float32    `query:"float32"`
+	Float64    float64    `query:"float64"`
+	Complex64  complex64  `query:"complex64"`
+	Complex128 complex128 `query:"complex128"`
+	Time       time.Time  `query:"time"`
 }
 
 type basicValWithOmit struct {
-	String     string     `qs:"string,omitempty"`
-	Bool       bool       `qs:"bool,omitempty"`
-	Int        int        `qs:"int,omitempty"`
-	Int8       int8       `qs:"int8,omitempty"`
-	Int16      int16      `qs:"int16,omitempty"`
-	Int32      int32      `qs:"int32,omitempty"`
-	Int64      int64      `qs:"int64,omitempty"`
-	Uint       uint       `qs:"uint,omitempty"`
-	Uint8      uint8      `qs:"uint8,omitempty"`
-	Uint16     uint16     `qs:"uint16,omitempty"`
-	Uint32     uint32     `qs:"uint32,omitempty"`
-	Uint64     uint64     `qs:"uint64,omitempty"`
-	Float32    float32    `qs:"float32,omitempty"`
-	Float64    float64    `qs:"float64,omitempty"`
-	Complex64  complex64  `qs:"complex64,omitempty"`
-	Complex128 complex128 `qs:"complex128,omitempty"`
-	Time       time.Time  `qs:"time,omitempty"`
+	String     string     `query:"string,omitempty"`
+	Bool       bool       `query:"bool,omitempty"`
+	Int        int        `query:"int,omitempty"`
+	Int8       int8       `query:"int8,omitempty"`
+	Int16      int16      `query:"int16,omitempty"`
+	Int32      int32      `query:"int32,omitempty"`
+	Int64      int64      `query:"int64,omitempty"`
+	Uint       uint       `query:"uint,omitempty"`
+	Uint8      uint8      `query:"uint8,omitempty"`
+	Uint16     uint16     `query:"uint16,omitempty"`
+	Uint32     uint32     `query:"uint32,omitempty"`
+	Uint64     uint64     `query:"uint64,omitempty"`
+	Float32    float32    `query:"float32,omitempty"`
+	Float64    float64    `query:"float64,omitempty"`
+	Complex64  complex64  `query:"complex64,omitempty"`
+	Complex128 complex128 `query:"complex128,omitempty"`
+	Time       time.Time  `query:"time,omitempty"`
 }
 
 type basicPtr struct {
-	String     *string     `qs:"string"`
-	Bool       *bool       `qs:"bool"`
-	Int        *int        `qs:"int"`
-	Int8       *int8       `qs:"int8"`
-	Int16      *int16      `qs:"int16"`
-	Int32      *int32      `qs:"int32"`
-	Int64      *int64      `qs:"int64"`
-	Uint       *uint       `qs:"uint"`
-	Uint8      *uint8      `qs:"uint8"`
-	Uint16     *uint16     `qs:"uint16"`
-	Uint32     *uint32     `qs:"uint32"`
-	Uint64     *uint64     `qs:"uint64"`
-	UinPtr     *uintptr    `qs:"uintptr"`
-	Float32    *float32    `qs:"float32"`
-	Float64    *float64    `qs:"float64"`
-	Complex64  *complex64  `qs:"complex64"`
-	Complex128 *complex128 `qs:"complex128"`
-	Time       *time.Time  `qs:"time"`
+	String     *string     `query:"string"`
+	Bool       *bool       `query:"bool"`
+	Int        *int        `query:"int"`
+	Int8       *int8       `query:"int8"`
+	Int16      *int16      `query:"int16"`
+	Int32      *int32      `query:"int32"`
+	Int64      *int64      `query:"int64"`
+	Uint       *uint       `query:"uint"`
+	Uint8      *uint8      `query:"uint8"`
+	Uint16     *uint16     `query:"uint16"`
+	Uint32     *uint32     `query:"uint32"`
+	Uint64     *uint64     `query:"uint64"`
+	UinPtr     *uintptr    `query:"uintptr"`
+	Float32    *float32    `query:"float32"`
+	Float64    *float64    `query:"float64"`
+	Complex64  *complex64  `query:"complex64"`
+	Complex128 *complex128 `query:"complex128"`
+	Time       *time.Time  `query:"time"`
 }
 
 type basicPtrWithOmit struct {
-	String     *string     `qs:"string,omitempty"`
-	Bool       *bool       `qs:"bool,omitempty"`
-	Int        *int        `qs:"int,omitempty"`
-	Int8       *int8       `qs:"int8,omitempty"`
-	Int16      *int16      `qs:"int16,omitempty"`
-	Int32      *int32      `qs:"int32,omitempty"`
-	Int64      *int64      `qs:"int64,omitempty"`
-	Uint       *uint       `qs:"uint,omitempty"`
-	Uint8      *uint8      `qs:"uint8,omitempty"`
-	Uint16     *uint16     `qs:"uint16,omitempty"`
-	Uint32     *uint32     `qs:"uint32,omitempty"`
-	Uint64     *uint64     `qs:"uint64,omitempty"`
-	Float32    *float32    `qs:"float32,omitempty"`
-	Float64    *float64    `qs:"float64,omitempty"`
-	Complex64  *complex64  `qs:"complex64,omitempty"`
-	Complex128 *complex128 `qs:"complex128,omitempty"`
-	Time       *time.Time  `qs:"time,omitempty"`
+	String     *string     `query:"string,omitempty"`
+	Bool       *bool       `query:"bool,omitempty"`
+	Int        *int        `query:"int,omitempty"`
+	Int8       *int8       `query:"int8,omitempty"`
+	Int16      *int16      `query:"int16,omitempty"`
+	Int32      *int32      `query:"int32,omitempty"`
+	Int64      *int64      `query:"int64,omitempty"`
+	Uint       *uint       `query:"uint,omitempty"`
+	Uint8      *uint8      `query:"uint8,omitempty"`
+	Uint16     *uint16     `query:"uint16,omitempty"`
+	Uint32     *uint32     `query:"uint32,omitempty"`
+	Uint64     *uint64     `query:"uint64,omitempty"`
+	Float32    *float32    `query:"float32,omitempty"`
+	Float64    *float64    `query:"float64,omitempty"`
+	Complex64  *complex64  `query:"complex64,omitempty"`
+	Complex128 *complex128 `query:"complex128,omitempty"`
+	Time       *time.Time  `query:"time,omitempty"`
 }
 
 func TestIgnore(t *testing.T) {
@@ -99,7 +99,7 @@ func TestIgnore(t *testing.T) {
 
 	v := struct {
 		anonymous string
-		Test      string `qs:"-"`
+		Test      string `query:"-"`
 	}{}
 
 	values, err := encoder.Values(v)
@@ -127,7 +127,7 @@ func TestGetTag(t *testing.T) {
 	e := NewEncoder().dataPool.Get().(*encoder)
 
 	s := struct {
-		A string `qs:"abc"`
+		A string `query:"abc"`
 	}{}
 
 	field := reflect.TypeOf(s).Field(0)
@@ -159,7 +159,7 @@ func TestGetTag3(t *testing.T) {
 	e := NewEncoder().dataPool.Get().(*encoder)
 
 	s := struct {
-		ABC string `qs:",omitempty"`
+		ABC string `query:",omitempty"`
 	}{}
 
 	field := reflect.TypeOf(s).Field(0)
@@ -407,9 +407,9 @@ func TestIgnoreEmptySlice(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := struct {
-		A []string  `qs:"a"`
-		B []string  `qs:"b"`
-		C *[]string `qs:"c"`
+		A []string  `query:"a"`
+		B []string  `query:"b"`
+		C *[]string `query:"c"`
 	}{
 		A: nil,
 		B: []string{},
@@ -429,9 +429,9 @@ func TestSliceValWithBasicVal(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := struct {
-		StringList []string `qs:"str_list"`
-		BoolList   []bool   `qs:"bool_list"`
-		IntList    []int    `qs:"int_list"`
+		StringList []string `query:"str_list"`
+		BoolList   []bool   `query:"bool_list"`
+		IntList    []int    `query:"int_list"`
 	}{
 		StringList: []string{"", "a", "b", "c"},
 		BoolList:   []bool{true, false},
@@ -455,9 +455,9 @@ func TestSliceValWithBasicPtr(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := struct {
-		StringList []*string `qs:"str_list"`
-		BoolList   []*bool   `qs:"bool_list"`
-		IntList    []*int    `qs:"int_list"`
+		StringList []*string `query:"str_list"`
+		BoolList   []*bool   `query:"bool_list"`
+		IntList    []*int    `query:"int_list"`
 	}{
 		StringList: []*string{withStr(""), withStr("a"), withStr("b"), withStr("c")},
 		BoolList:   []*bool{withBool(true), withBool(false)},
@@ -485,9 +485,9 @@ func TestSlicePtrWithBasicVal(t *testing.T) {
 	intList := []int{0, 1, 2, 3}
 
 	s := struct {
-		StringList *[]string `qs:"str_list"`
-		BoolList   *[]bool   `qs:"bool_list"`
-		IntList    *[]int    `qs:"int_list"`
+		StringList *[]string `query:"str_list"`
+		BoolList   *[]bool   `query:"bool_list"`
+		IntList    *[]int    `query:"int_list"`
 	}{
 		StringList: &strList,
 		BoolList:   &boolList,
@@ -515,9 +515,9 @@ func TestSlicePtrWithBasicPtr(t *testing.T) {
 	intList := []*int{withInt(0), withInt(1), withInt(2), withInt(3)}
 
 	s := struct {
-		StringList *[]*string `qs:"str_list"`
-		BoolList   *[]*bool   `qs:"bool_list"`
-		IntList    *[]*int    `qs:"int_list"`
+		StringList *[]*string `query:"str_list"`
+		BoolList   *[]*bool   `query:"bool_list"`
+		IntList    *[]*int    `query:"int_list"`
 	}{
 		StringList: &strList,
 		BoolList:   &boolList,
@@ -543,12 +543,12 @@ func TestTimeFormat(t *testing.T) {
 	tm := time.Unix(600, 0).UTC()
 
 	times := struct {
-		Rfc3339    time.Time  `qs:"default_fmt"`
-		Second     time.Time  `qs:"default_second,second"`
-		Millis     time.Time  `qs:"default_millis,millis"`
-		Rfc3339Ptr *time.Time `qs:"default_fmt_ptr"`
-		SecondPtr  *time.Time `qs:"default_second_ptr,second"`
-		MillisPtr  *time.Time `qs:"default_millis_ptr,millis"`
+		Rfc3339    time.Time  `query:"default_fmt"`
+		Second     time.Time  `query:"default_second,second"`
+		Millis     time.Time  `query:"default_millis,millis"`
+		Rfc3339Ptr *time.Time `query:"default_fmt_ptr"`
+		SecondPtr  *time.Time `query:"default_second_ptr,second"`
+		MillisPtr  *time.Time `query:"default_millis_ptr,millis"`
 	}{
 		tm,
 		tm,
@@ -578,9 +578,9 @@ func TestBoolFormat(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := struct {
-		Bool1   bool  `qs:"bool_1,int"`
-		Bool2   bool  `qs:"bool_2,int"`
-		NilBool *bool `qs:",omitempty"`
+		Bool1   bool  `query:"bool_1,int"`
+		Bool2   bool  `query:"bool_2,int"`
+		NilBool *bool `query:",omitempty"`
 	}{
 		Bool2: true,
 	}
@@ -602,9 +602,9 @@ func TestArrayFormat_Comma(t *testing.T) {
 	tm := time.Unix(600, 0).UTC()
 
 	s := struct {
-		EmptyList  []string     `qs:"empty_list,comma"`
-		StringList []string     `qs:"str_list,comma"`
-		Times      []*time.Time `qs:"times,comma"`
+		EmptyList  []string     `query:"empty_list,comma"`
+		StringList []string     `query:"str_list,comma"`
+		Times      []*time.Time `query:"times,comma"`
 	}{
 		StringList: []string{"a", "b", "c"},
 		Times:      []*time.Time{&tm, nil},
@@ -629,8 +629,8 @@ func TestArrayFormat_Repeat(t *testing.T) {
 	tm := time.Unix(600, 0).UTC()
 
 	s := struct {
-		StringList []string     `qs:"str_list"`
-		Times      []*time.Time `qs:"times"`
+		StringList []string     `query:"str_list"`
+		Times      []*time.Time `query:"times"`
 	}{
 		StringList: []string{"a", "b", "c"},
 		Times:      []*time.Time{&tm, nil},
@@ -654,8 +654,8 @@ func TestArrayFormat_Bracket(t *testing.T) {
 	tm := time.Unix(600, 0).UTC()
 
 	s := struct {
-		StringList []string     `qs:"str_list,bracket"`
-		Times      []*time.Time `qs:"times,bracket"`
+		StringList []string     `query:"str_list,bracket"`
+		Times      []*time.Time `query:"times,bracket"`
 	}{
 		StringList: []string{"a", "b", "c"},
 		Times:      []*time.Time{&tm, nil},
@@ -679,9 +679,9 @@ func TestArrayFormat_Index(t *testing.T) {
 	tm := time.Unix(600, 0).UTC()
 
 	s := struct {
-		StringList []string     `qs:"str_list,index"`
-		Times      []*time.Time `qs:"times,index"`
-		NilSlice   *[]int       `qs:",omitempty"`
+		StringList []string     `query:"str_list,index"`
+		Times      []*time.Time `query:"times,index"`
+		NilSlice   *[]int       `query:",omitempty"`
 	}{
 		StringList: []string{"a", "b", "c"},
 		Times:      []*time.Time{&tm, nil},
@@ -710,17 +710,17 @@ func TestNestedStruct(t *testing.T) {
 	type newTime time.Time
 
 	type Nested struct {
-		Time   time.Time `qs:"time,second"`
-		Name   *string   `qs:"name,omitempty"`
-		NewStr newTime   `qs:"new_time,omitempty"`
+		Time   time.Time `query:"time,second"`
+		Name   *string   `query:"name,omitempty"`
+		NewStr newTime   `query:"new_time,omitempty"`
 	}
 
 	s := struct {
-		Nested           Nested   `qs:"nested"`
-		NestedOmitNilPtr *Nested  `qs:"nested_omit_nil_ptr,omitempty"`
-		NestedNilPtr     *Nested  `qs:"nested_ptr"`
-		NestedPtr        *Nested  `qs:"nested_ptr"`
-		NestedList       []Nested `qs:"nest_list,index"`
+		Nested           Nested   `query:"nested"`
+		NestedOmitNilPtr *Nested  `query:"nested_omit_nil_ptr,omitempty"`
+		NestedNilPtr     *Nested  `query:"nested_ptr"`
+		NestedPtr        *Nested  `query:"nested_ptr"`
+		NestedList       []Nested `query:"nest_list,index"`
 	}{
 		Nested: Nested{
 			Time: tm,
@@ -762,12 +762,12 @@ func TestEncodeInterface(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := &struct {
-		String     interface{} `qs:"string"`
-		Bool       interface{} `qs:"bool"`
-		Int        interface{} `qs:"int"`
-		EmptyFloat interface{} `qs:"float,omitempty"`
-		NilPtr     interface{} `qs:"nil_ptr"`
-		OmitNilPtr interface{} `qs:"omit_nil_ptr,omitempty"`
+		String     interface{} `query:"string"`
+		Bool       interface{} `query:"bool"`
+		Int        interface{} `query:"int"`
+		EmptyFloat interface{} `query:"float,omitempty"`
+		NilPtr     interface{} `query:"nil_ptr"`
+		OmitNilPtr interface{} `query:"omit_nil_ptr,omitempty"`
 	}{
 		String: "abc",
 		Bool:   true,
@@ -792,11 +792,11 @@ func TestEncodeMap(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := struct {
-		Map       map[string]bool    `qs:"map,int,omitempty"`
-		PtrMap    map[string]*bool   `qs:"ptr_map"`
-		NilMap    map[string]int     `qs:"nil_map"`
-		NilPtrMap *map[string]int    `qs:"nil_ptr_map"`
-		EmptyMap  map[*string]string `qs:"empty_map"`
+		Map       map[string]bool    `query:"map,int,omitempty"`
+		PtrMap    map[string]*bool   `query:"ptr_map"`
+		NilMap    map[string]int     `query:"nil_map"`
+		NilPtrMap *map[string]int    `query:"nil_ptr_map"`
+		EmptyMap  map[*string]string `query:"empty_map"`
 	}{
 		Map: map[string]bool{
 			"abc": true,
@@ -848,24 +848,24 @@ func TestEncodeCustomType(t *testing.T) {
 
 	var zeroPtrTs *TimestampPtr
 	s := struct {
-		OmitTimestamp    Timestamp     `qs:"zero_ts,omitempty"`
-		ZeroTimestamp    Timestamp     `qs:"zero_ts"`
-		Timestamp        Timestamp     `qs:"ts"`
-		InterfaceTs      interface{}   `qs:"interface_ts"`
-		ZeroInterfaceTs  interface{}   `qs:"zero_interface_ts,omitempty"`
-		OmitPtrTimestamp *TimestampPtr `qs:"omit_ptr_ts,omitempty"`
-		NilPtrTimestamp  *TimestampPtr `qs:"zero_ptr_ts"`
-		TimestampPtr     *TimestampPtr `qs:"timestamp_ptr"`
-		TsList           []Timestamp   `qs:"ts_list"`
-		TsCommaList      []Timestamp   `qs:"ts_comma_list,comma"`
-		TsBracketList    []Timestamp   `qs:"ts_bracket_list,bracket"`
-		TsIndexList      []Timestamp   `qs:"ts_index_list,index"`
-		OmitTsList       []*Timestamp  `qs:"omit_ts_list"`
-		NilTsList        []*Timestamp  `qs:"nil_ts_list"`
-		TsPtrList        []*Timestamp  `qs:"ts_ptr_list"`
-		TsPtrCommaList   []*Timestamp  `qs:"ts_ptr_comma_list,comma"`
-		TsPtrBracketList []*Timestamp  `qs:"ts_ptr_bracket_list,bracket"`
-		TsPtrIndexList   []*Timestamp  `qs:"ts_ptr_index_list,index"`
+		OmitTimestamp    Timestamp     `query:"zero_ts,omitempty"`
+		ZeroTimestamp    Timestamp     `query:"zero_ts"`
+		Timestamp        Timestamp     `query:"ts"`
+		InterfaceTs      interface{}   `query:"interface_ts"`
+		ZeroInterfaceTs  interface{}   `query:"zero_interface_ts,omitempty"`
+		OmitPtrTimestamp *TimestampPtr `query:"omit_ptr_ts,omitempty"`
+		NilPtrTimestamp  *TimestampPtr `query:"zero_ptr_ts"`
+		TimestampPtr     *TimestampPtr `query:"timestamp_ptr"`
+		TsList           []Timestamp   `query:"ts_list"`
+		TsCommaList      []Timestamp   `query:"ts_comma_list,comma"`
+		TsBracketList    []Timestamp   `query:"ts_bracket_list,bracket"`
+		TsIndexList      []Timestamp   `query:"ts_index_list,index"`
+		OmitTsList       []*Timestamp  `query:"omit_ts_list"`
+		NilTsList        []*Timestamp  `query:"nil_ts_list"`
+		TsPtrList        []*Timestamp  `query:"ts_ptr_list"`
+		TsPtrCommaList   []*Timestamp  `query:"ts_ptr_comma_list,comma"`
+		TsPtrBracketList []*Timestamp  `query:"ts_ptr_bracket_list,bracket"`
+		TsPtrIndexList   []*Timestamp  `query:"ts_ptr_index_list,index"`
 	}{
 		OmitTimestamp:   Timestamp{time.Time{}.UTC()},
 		ZeroTimestamp:   Timestamp{time.Time{}.UTC()},
@@ -956,21 +956,21 @@ func TestEncodeErrCustomType(t *testing.T) {
 		},
 	}
 	s3 := struct {
-		ErrBracketList []*ErrTimestamp `qs:",bracket"`
+		ErrBracketList []*ErrTimestamp `query:",bracket"`
 	}{
 		ErrBracketList: []*ErrTimestamp{
 			{tm},
 		},
 	}
 	s4 := struct {
-		ErrIndexList []*ErrTimestamp `qs:",index"`
+		ErrIndexList []*ErrTimestamp `query:",index"`
 	}{
 		ErrIndexList: []*ErrTimestamp{
 			{tm},
 		},
 	}
 	s5 := struct {
-		ErrIndexList []*ErrTimestamp `qs:",comma"`
+		ErrIndexList []*ErrTimestamp `query:",comma"`
 	}{
 		ErrIndexList: []*ErrTimestamp{
 			{tm},
@@ -1067,11 +1067,11 @@ func TestEncoderIgnoreUnregisterType(t *testing.T) {
 	encoder := NewEncoder()
 
 	s := struct {
-		Fn  []func()             `qs:"fn,bracket"`
-		Ch  []chan struct{}      `qs:"chan,comma"`
-		Ch2 []chan struct{}      `qs:"chan2,index"`
-		Ch3 []chan struct{}      `qs:"chan3"`
-		Ch4 map[chan bool]func() `qs:"chan4"`
+		Fn  []func()             `query:"fn,bracket"`
+		Ch  []chan struct{}      `query:"chan,comma"`
+		Ch2 []chan struct{}      `query:"chan2,index"`
+		Ch3 []chan struct{}      `query:"chan3"`
+		Ch4 map[chan bool]func() `query:"chan4"`
 	}{
 		Fn:  []func(){func() {}},
 		Ch:  []chan struct{}{make(chan struct{})},

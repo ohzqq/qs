@@ -1,12 +1,13 @@
 package qs
 
 import (
-	"github.com/pkg/errors"
 	"net/url"
 	"reflect"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/pkg/errors"
 )
 
 const (
@@ -48,7 +49,7 @@ func WithTagAlias(tagAlias string) EncoderOption {
 // Use EncoderOption to apply options
 func NewEncoder(options ...EncoderOption) *Encoder {
 	e := &Encoder{
-		tagAlias: "qs",
+		tagAlias: "query",
 	}
 
 	// Apply options

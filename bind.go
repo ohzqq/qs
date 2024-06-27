@@ -37,7 +37,7 @@ type bindMultipleUnmarshaler interface {
 
 // BindQueryParams binds query params to bindable object
 func (b *DefaultBinder) BindQueryParams(v url.Values, i interface{}) error {
-	return b.bindData(i, v, "qs")
+	return b.bindData(i, v, "query")
 }
 
 // Bind implements the `Binder#Bind` function.
@@ -85,7 +85,7 @@ func (b *DefaultBinder) bindData(destination interface{}, data map[string][]stri
 	// !struct
 	if typ.Kind() != reflect.Struct {
 		println("not a struct")
-		if tag == "qs" {
+		if tag == "query" || tag == "params" {
 			// incompatible type, data is probably to be found in the body
 			return nil
 		}

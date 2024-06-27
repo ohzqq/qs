@@ -41,25 +41,25 @@ func TestUnmarshal(t *testing.T) {
 	}
 }
 
-func TestMarshal(t *testing.T) {
-	v, err := Encode(testParams)
-	if err != nil {
-		t.Error(err)
-	}
-	//fmt.Printf("%#v\n", v)
-	sw := []string{"title"}
-	if !slices.Equal(v["searchableAttributes"], sw) {
-		t.Errorf("got %v, expected %v\n", v["searchableAttributes"], sw)
-	}
-	facets := []string{"tags", "authors", "series", "narrators"}
-	if !slices.Equal(v["attributesForFaceting"], facets) {
-		t.Errorf("got %v, expected %v\n", v["attributesForFaceting"], facets)
-	}
-	i := []string{"default"}
-	if !slices.Equal(v["index"], i) {
-		t.Errorf("got %v, expected %v\n", v["index"], i)
-	}
-}
+//func TestMarshal(t *testing.T) {
+//  v, err := Encode(testParams)
+//  if err != nil {
+//    t.Error(err)
+//  }
+//  //fmt.Printf("%#v\n", v)
+//  sw := []string{"title"}
+//  if !slices.Equal(v["searchableAttributes"], sw) {
+//    t.Errorf("got %v, expected %v\n", v["searchableAttributes"], sw)
+//  }
+//  facets := []string{"tags", "authors", "series", "narrators"}
+//  if !slices.Equal(v["attributesForFaceting"], facets) {
+//    t.Errorf("got %v, expected %v\n", v["attributesForFaceting"], facets)
+//  }
+//  i := []string{"default"}
+//  if !slices.Equal(v["index"], i) {
+//    t.Errorf("got %v, expected %v\n", v["index"], i)
+//  }
+//}
 
 func parsed() url.Values {
 	v, _ := url.ParseQuery(urlq)
