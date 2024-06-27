@@ -6,12 +6,12 @@ import (
 	"testing"
 )
 
-const urlq = `searchableAttributes=title&attributesForFaceting=tags,authors,series,narrators&index=default`
+const urlq = `/indexes/default?searchableAttributes=title&attributesForFaceting=tags&attributesForFaceting=authors&attributesForFaceting=series&attributesForFaceting=narrators`
 
 type params struct {
 	SrchAttr  []string `query:"searchableAttributes"`
 	FacetAttr []string `query:"attributesForFaceting"`
-	Index     string   `query:"index"`
+	Index     string   `path:"index"`
 }
 
 var testParams = &params{
@@ -20,24 +20,29 @@ var testParams = &params{
 	Index:     "default",
 }
 
-func TestUnmarshal(t *testing.T) {
-	q := parsed()
-	p := params{}
-	err := Decode(q, &p)
+func TestDecoder(t *testing.T) {
+	pv := map[string]string{
+		"index": "default",
+	}
+	dest := params{}
+	dec := NewDecoder(pv)
+	err := dec.Decode(urlq, &dest)
+	//q := parsed()
+	//err := Decode(q, &p)
 	if err != nil {
 		t.Error(err)
 	}
 	sw := []string{"title"}
-	if !slices.Equal(p.SrchAttr, sw) {
-		t.Errorf("got %v, expected %v\n", p.SrchAttr, sw)
+	if !slices.Equal(dest.SrchAttr, sw) {
+		t.Errorf("got %v, expected %v\n", dest.SrchAttr, sw)
 	}
-	facets := []string{"tags,authors,series,narrators"}
-	if !slices.Equal(p.FacetAttr, facets) {
-		t.Errorf("got %v, expected %v\n", p.FacetAttr, facets)
+	facets := []string{"tags", "authors", "series", "narrators"}
+	if !slices.Equal(dest.FacetAttr, facets) {
+		t.Errorf("got %v, expected %v\n", dest.FacetAttr, facets)
 	}
 	i := "default"
-	if p.Index != i {
-		t.Errorf("got %v, expected %v\n", p.Index, i)
+	if dest.Index != i {
+		t.Errorf("got %v, expected %v\n", dest.Index, i)
 	}
 }
 

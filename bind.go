@@ -35,6 +35,15 @@ type bindMultipleUnmarshaler interface {
 	UnmarshalParams(params []string) error
 }
 
+// BindPathParams binds path params to bindable object
+func (b *DefaultBinder) BindPathParams(pathVals map[string]string, i interface{}) error {
+	params := map[string][]string{}
+	for name, v := range pathVals {
+		params[name] = []string{v}
+	}
+	return b.bindData(i, params, "path")
+}
+
 // BindQueryParams binds query params to bindable object
 func (b *DefaultBinder) BindQueryParams(v url.Values, i interface{}) error {
 	return b.bindData(i, v, "query")
@@ -85,7 +94,7 @@ func (b *DefaultBinder) bindData(destination interface{}, data map[string][]stri
 	// !struct
 	if typ.Kind() != reflect.Struct {
 		println("not a struct")
-		if tag == "query" || tag == "params" {
+		if tag == "query" || tag == "path" {
 			// incompatible type, data is probably to be found in the body
 			return nil
 		}
