@@ -1,0 +1,67 @@
+package qs
+
+import (
+	"net/url"
+	"slices"
+	"testing"
+)
+
+const urlq = `searchableAttributes=title&attributesForFaceting=tags,authors,series,narrators&index=default`
+
+type params struct {
+	SrchAttr  []string `query:"searchableAttributes"`
+	FacetAttr []string `query:"attributesForFaceting"`
+	Index     string   `query:"index"`
+}
+
+var testParams = &params{
+	SrchAttr:  []string{"title"},
+	FacetAttr: []string{"tags", "authors", "series", "narrators"},
+	Index:     "default",
+}
+
+func TestUnmarshal(t *testing.T) {
+	q := parsed()
+	p := params{}
+	err := Decode(q, &p)
+	if err != nil {
+		t.Error(err)
+	}
+	sw := []string{"title"}
+	if !slices.Equal(p.SrchAttr, sw) {
+		t.Errorf("got %v, expected %v\n", p.SrchAttr, sw)
+	}
+	facets := []string{"tags,authors,series,narrators"}
+	if !slices.Equal(p.FacetAttr, facets) {
+		t.Errorf("got %v, expected %v\n", p.FacetAttr, facets)
+	}
+	i := "default"
+	if p.Index != i {
+		t.Errorf("got %v, expected %v\n", p.Index, i)
+	}
+}
+
+func TestMarshal(t *testing.T) {
+	v, err := Encode(testParams)
+	if err != nil {
+		t.Error(err)
+	}
+	//fmt.Printf("%#v\n", v)
+	sw := []string{"title"}
+	if !slices.Equal(v["searchableAttributes"], sw) {
+		t.Errorf("got %v, expected %v\n", v["searchableAttributes"], sw)
+	}
+	facets := []string{"tags", "authors", "series", "narrators"}
+	if !slices.Equal(v["attributesForFaceting"], facets) {
+		t.Errorf("got %v, expected %v\n", v["attributesForFaceting"], facets)
+	}
+	i := []string{"default"}
+	if !slices.Equal(v["index"], i) {
+		t.Errorf("got %v, expected %v\n", v["index"], i)
+	}
+}
+
+func parsed() url.Values {
+	v, _ := url.ParseQuery(urlq)
+	return v
+}
