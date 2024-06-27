@@ -1,4 +1,4 @@
-module github.com/sonh/qs
+module github.com/ohzqq/qs
 
 go 1.19
 
