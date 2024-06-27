@@ -304,14 +304,18 @@ func (e *encoder) structCaching(fields *cachedFields, stVal reflect.Value, scope
 func (e *encoder) getTagNameAndOpts(f reflect.StructField) {
 	// Get tag by alias
 	tag := f.Tag.Get(e.e.tagAlias)
+	if tag == "" {
+		e.tags[0] = []byte(`-`)
+		return
+	}
 
 	// Clear first tag in slice
 	e.tags[0] = e.tags[0][:0]
 
 	if len(tag) == 0 {
 		// no tag, using struct field name
-		e.tags[0] = append(e.tags[0][:0], f.Name...)
-		e.tags = e.tags[:1]
+		//e.tags[0] = append(e.tags[0][:0], f.Name...)
+		//e.tags = e.tags[:1]
 	} else {
 		// Use first tag as temp
 		e.tags[0] = append(e.tags[0][:0], tag...)

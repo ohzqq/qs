@@ -52,6 +52,8 @@ type basicVal struct {
 	Complex64  complex64  `query:"complex64"`
 	Complex128 complex128 `query:"complex128"`
 	Time       time.Time  `query:"time"`
+
+	Bleh string
 }
 
 type basicValWithOmit struct {
@@ -371,6 +373,7 @@ func TestZeroVal(t *testing.T) {
 		"complex128": []string{complexZeroValStr()},
 		"time":       []string{time.Time{}.Format(time.RFC3339)},
 	}
+	fmt.Printf("expected %#v\n", expected)
 	test.Equal(expected, values)
 }
 
