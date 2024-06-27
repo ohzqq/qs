@@ -6,24 +6,24 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/sonh/qs)](https://pkg.go.dev/github.com/sonh/qs)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/sonh/qs/blob/main/LICENSE)
 
-Package sonh/qs encodes structs into url.Values.
+Package ohzqq/qs encodes structs into url.Values and decodes a url to structs.
 
 ## Installation
 ```bash
-go get github.com/sonh/qs
+go get github.com/ohzqq/qs
 ```
 
 ## Usage
 ```go
 import (
-    "github.com/sonh/qs"
+    "github.com/ohzqq/qs"
 )
 ```
 Package qs exports `NewEncoder()` function to create an encoder. 
 
 Encoder caches struct info to speed up encoding process, use a single instance is highly recommended. 
 
-Use `WithTagAlias()` func to register custom tag alias (default is `qs`)
+Use `WithTagAlias()` func to register custom tag alias (default is `query`)
 ```go
 encoder = qs.NewEncoder(
     qs.WithTagAlias("myTag"),
@@ -43,11 +43,11 @@ Encoder has `Values()` and `Encode()` functions to encode structs into `url.Valu
 ### Example
 ```go
 type Query struct {
-    Tags   []string  `qs:"tags"`
-    Limit  int       `qs:"limit"`
-    From   time.Time `qs:"from"`
-    Active bool      `qs:"active,omitempty"`  //omit empty value
-    Ignore float64   `qs:"-"`                 //ignore
+    Tags   []string  `query:"tags"`
+    Limit  int       `query:"limit"`
+    From   time.Time `query:"from"`
+    Active bool      `query:"active,omitempty"`  //omit empty value
+    Ignore float64   `query:"-"`                 //ignore
 }
 
 query := &Query{
@@ -68,8 +68,8 @@ fmt.Println(values.Encode()) //(unescaped) output: "from=2020-02-02T00:00:00Z&li
 Use `int` option to encode bool to integer
 ```go
 type Query struct {
-    DefaultFmt bool `qs:"default_fmt"`
-    IntFmt     bool `qs:"int_fmt,int"`
+    DefaultFmt bool `query:"default_fmt"`
+    IntFmt     bool `query:"int_fmt,int"`
 }
 
 query := &Query{
@@ -85,9 +85,9 @@ By default, package encodes time.Time values as RFC3339 format.
 Including the `"second"` or `"millis"` option to signal that the field should be encoded as second or millisecond.
 ```go
 type Query struct {
-    Default time.Time   `qs:"default_fmt"`
-    Second  time.Time   `qs:"second_fmt,second"` //use `second` option
-    Millis  time.Time   `qs:"millis_fmt,millis"` //use `millis` option
+    Default time.Time   `query:"default_fmt"`
+    Second  time.Time   `query:"second_fmt,second"` //use `second` option
+    Millis  time.Time   `query:"millis_fmt,millis"` //use `millis` option
 }
 
 t := time.Unix(1580601600, 0).UTC()
@@ -106,7 +106,7 @@ fmt.Println(values.Encode()) // (unescaped) output: "default_fmt=2020-02-02T00:0
 Slice and Array default to encoding into multiple URL values of the same value name.
 ```go
 type Query struct {
-    Tags []string `qs:"tags"`
+    Tags []string `query:"tags"`
 }
 
 values, _ := encoder.Values(&Query{Tags: []string{"foo","bar"}})
@@ -116,7 +116,7 @@ fmt.Println(values.Encode()) //(unescaped) output: "tags=foo&tags=bar"
 Including the `comma` option to signal that the field should be encoded as a single comma-delimited value.
 ```go
 type Query struct {
-    Tags []string `qs:"tags,comma"`
+    Tags []string `query:"tags,comma"`
 }
 
 values, _ := encoder.Values(&Query{Tags: []string{"foo","bar"}})
@@ -126,7 +126,7 @@ fmt.Println(values.Encode()) //(unescaped) output: "tags=foo,bar"
 Including the `bracket` option to signal that the multiple URL values should have "[]" appended to the value name.
 ```go
 type Query struct {
-    Tags []string `qs:"tags,bracket"`
+    Tags []string `query:"tags,bracket"`
 }
 
 values, _ := encoder.Values(&Query{Tags: []string{"foo","bar"}})
@@ -136,7 +136,7 @@ fmt.Println(values.Encode()) //(unescaped) output: "tags[]=foo&tags[]=bar"
 The `index` option will append an index number with brackets to value name.
 ```go
 type Query struct {
-    Tags []string `qs:"tags,index"`
+    Tags []string `query:"tags,index"`
 }
 
 values, _ := encoder.Values(&Query{Tags: []string{"foo","bar"}})
@@ -147,12 +147,12 @@ fmt.Println(values.Encode()) //(unescaped) output: "tags[0]=foo&tags[1]=bar"
 All nested structs are encoded including the parent value name with brackets for scoping.
 ```go
 type User struct {
-    Verified bool      `qs:"verified"`
-    From     time.Time `qs:"from,millis"`
+    Verified bool      `query:"verified"`
+    From     time.Time `query:"from,millis"`
 }
 
 type Query struct {
-    User User `qs:"user"`
+    User User `query:"user"`
 }
 
 query := Query{
@@ -184,8 +184,8 @@ func (n NullableName) IsZero() bool {
 }
 
 type Struct struct {
-    User  NullableName `qs:"user"`
-    Admin NullableName `qs:"admin,omitempty"`
+    User  NullableName `query:"user"`
+    Admin NullableName `query:"admin,omitempty"`
 }
 
 s := Struct{

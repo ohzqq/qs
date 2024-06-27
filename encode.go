@@ -38,7 +38,7 @@ type encoder struct {
 	scope  []byte
 }
 
-// WithTagAlias create a option to set custom tag alias instead of `qs`
+// WithTagAlias create a option to set custom tag alias instead of `query`
 func WithTagAlias(tagAlias string) EncoderOption {
 	return func(encoder *Encoder) {
 		encoder.tagAlias = tagAlias
