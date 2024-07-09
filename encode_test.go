@@ -149,7 +149,8 @@ func TestGetTag(t *testing.T) {
 	e := NewEncoder().dataPool.Get().(*encoder)
 
 	s := struct {
-		A string `query:"abc"`
+		A  string   `query:"abc"`
+		AS []string `query:"abcSlice"`
 	}{}
 
 	field := reflect.TypeOf(s).Field(0)
@@ -453,7 +454,7 @@ func TestSliceValWithBasicVal(t *testing.T) {
 	s := struct {
 		StringList []string `query:"str_list"`
 		BoolList   []bool   `query:"bool_list"`
-		IntList    []int    `query:"int_list"`
+		IntList    []int    `path:"idk" query:"int_list"`
 	}{
 		StringList: []string{"", "a", "b", "c"},
 		BoolList:   []bool{true, false},
